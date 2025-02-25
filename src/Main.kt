@@ -61,7 +61,7 @@ fun main() {
             4 -> {
                 val total =
                     (monedas20 * 20) + (monedas50 * 50) + (monedas100 * 100) + (monedas200 * 200) + (monedas500 * 500)
-                println("\nROMPIENDO LA ALCANCIA...")
+                println("\nROMPIENDO MARRANITO")
                 println("CANTIDAD DE MONEDAS POR DENOMINACION:")
                 println("$20: $monedas20")
                 println("$50: $monedas50")
@@ -75,7 +75,7 @@ fun main() {
                 monedas100 = 0
                 monedas200 = 0
                 monedas500 = 0
-                println("LA ALCANCIA HA SIDO VACIADA.")
+                println("ALCANCIA VACIA")
             }
         }
     }

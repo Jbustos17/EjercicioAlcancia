@@ -12,11 +12,11 @@ fun main() {
 
 
     while (continuar) {
-        println("\n--- Menú de la Alcancía ---")
-        println("1. Agregar moneda")
-        println("2. Contar monedas por denominación")
-        println("3. Calcular total ahorrado")
-        println("4. Romper la alcancía")
+        println("\nMenú de la Alcancía")
+        println("1- Agregar moneda")
+        println("2- Contar monedas por denominación")
+        println("3- Calcular total ahorrado")
+        println("4- Romper la alcancía")
         print("Seleccione una opción: ")
 
 

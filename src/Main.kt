@@ -1,39 +1,45 @@
+import kotlin.random.Random
+
 fun main() {
 
-    var intentos = 0
-    var accesoconcedido = false
+    println("Ingrese la Cantidad de dinero:")
+    val input = readLine()
+    var dinero = input?.toDoubleOrNull() ?: return println("Cantidad Invalida De Juego")// toDoubleOrNull se utiliza para convertir una cadena en un numero de punto flotante
 
-    while (intentos < 3 && !accesoconcedido) {
-        print("INGRESE SU CODIGO DE ACCESO: ")
-        val codigoInput = readLine()
-        val codigo = codigoInput?.toIntOrNull()
 
-        if (codigo == null) {
-            println("CODIGO INVALIDO, INTENTELO DE NUEVO.")
-            intentos++
-            continue
+    while (dinero > 0){
+
+        val numero = Random.nextInt(1,4)
+        println("Salio el numero: $numero")
+
+        when (numero){
+
+            3->{
+                println("Perdiste todo tu dinero, FIN DEL JUEGO")
+                dinero = 0.0
+            }
+            2-> {
+                dinero /= 2
+                println("Pierdes la mitad de tu dinero: $dinero ,Pero puedes seguir jugando")
+                println("Deseas seguir jugando (si/no)")
+                if (readLine()?. lowercase() != "si") break
+
+            }
+            1->{
+                dinero *= 2
+                println("Ganaste, Duplicaste tu dinero, ahora tienes: $dinero ")
+                println("Deseas seguir jugando (si/no)")
+                if (readLine()?. lowercase() != "si") break
+
+            }
         }
 
-        if (codigo in 1000..1999) {
-            println("EMPLEADO CON ID: $codigo")
-            accesoconcedido = true
-        } else if (codigo in 2000..2999) {
-            print("INGRESE SU NOMBRE: ")
-            val nombre = readLine() ?: ""
-            print("INGRESE EL MOTIVO DE SU VISITA: ")
-            val motivo = readLine() ?: ""
-            println("VISITANTE $nombre, MOTIVO DE VISITA: $motivo.")
-            accesoconcedido = true
-        } else {
-            intentos++
-            println("CÓDIGO INCORRECTO ($intentos intento(s)).")
-        }
-    }
+    println("Juego Terminado, Gracias por jugar en casino JBustos17")
 
-    if (!accesoconcedido) {
-        println("ACCESO BLOQUEADO")
     }
 }
+
+
 
 
 

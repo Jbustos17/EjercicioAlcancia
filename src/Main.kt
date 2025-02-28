@@ -1,32 +1,41 @@
-import kotlin.random.Random
-
 fun main() {
 
-    var contador = 1
-    var sumaDado1 = 0
-    var sumaDado2 = 0
+    var intentos = 0
+    var accesoconcedido = false
 
-    while (contador <= 10) {
-        val dado1 = Random.nextInt(1, 7)
-        val dado2 = Random.nextInt(1, 7)
-        val suma = dado1 + dado2
+    while (intentos < 3 && !accesoconcedido) {
+        print("INGRESE SU CODIGO DE ACCESO: ")
+        val codigoInput = readLine()
+        val codigo = codigoInput?.toIntOrNull()
 
-        println("Lanzamiento #$contador: Dado 1 = $dado1, Dado 2 = $dado2, Suma = $suma")
+        if (codigo == null) {
+            println("CODIGO INVALIDO, INTENTELO DE NUEVO.")
+            intentos++
+            continue
+        }
 
-        sumaDado1 += dado1
-        sumaDado2 += dado2
-
-        contador++
+        if (codigo in 1000..1999) {
+            println("EMPLEADO CON ID: $codigo")
+            accesoconcedido = true
+        } else if (codigo in 2000..2999) {
+            print("INGRESE SU NOMBRE: ")
+            val nombre = readLine() ?: ""
+            print("INGRESE EL MOTIVO DE SU VISITA: ")
+            val motivo = readLine() ?: ""
+            println("VISITANTE $nombre, MOTIVO DE VISITA: $motivo.")
+            accesoconcedido = true
+        } else {
+            intentos++
+            println("CÓDIGO INCORRECTO ($intentos intento(s)).")
+        }
     }
 
-    println("\nLa suma total del Dado 1 fue: $sumaDado1")
-    println("La suma total del Dado 2 fue: $sumaDado2")
-
-    when {
-        sumaDado1 > sumaDado2 -> println("El Dado 1 tuvo el mayor puntaje con $sumaDado1 puntos.")
-        sumaDado2 > sumaDado1 -> println("El Dado 2 tuvo el mayor puntaje con $sumaDado2 puntos.")
-        else -> println("Ambos dados tuvieron el mismo puntaje con $sumaDado1 puntos.")
+    if (!accesoconcedido) {
+        println("ACCESO BLOQUEADO")
     }
-
-
 }
+
+
+
+
+
